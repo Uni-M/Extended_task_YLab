@@ -2,7 +2,7 @@ package xml_parser.parser;
 
 import xml_parser.model.Node;
 import xml_parser.model.Root;
-import static xml_parser.appConfig.XConstant.*;
+import static xml_parser.AppConfig.XConstant.*;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;

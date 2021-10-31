@@ -1,4 +1,4 @@
-package xml_parser.appConfig.exeptions;
+package xml_parser.AppConfig.exeptions;
 
 public class ArgumentException extends Exception {
     public ArgumentException(String message) {

@@ -1,16 +1,16 @@
-package xml_parser.appConfig.argument_parser;
+package xml_parser.AppConfig.argument_parser;
 
-import xml_parser.appConfig.exeptions.*;
+import xml_parser.AppConfig.exeptions.*;
 
 import java.io.File;
 
-import static xml_parser.appConfig.XConstant.*;
+import static xml_parser.AppConfig.XConstant.*;
 
 public class ArgumentParser {
 
     private String inputFileName;
-    private String typeOfFilter = "";
-    private String stringToFilter = "";
+    private static String typeOfFilter = "";
+    private static String stringToFilter = "";
 
 
     public void ArgumentProcess(String[] args) throws ArgumentException { //Это старт парсинга
@@ -21,8 +21,8 @@ public class ArgumentParser {
     private void storeParams(String[] args) throws ArgumentException{
         inputFileName = fileExists(args[1]); // — это получение имени файла + проверка//
         if (args.length > 2){
-            typeOfFilter = args[2];
-            stringToFilter = args[3];
+            typeOfFilter += args[2];
+            stringToFilter += args[3];
         }
     }
 
@@ -47,11 +47,11 @@ public class ArgumentParser {
     }
 
 
-    public String getStringToFilter() {
+    public static String getStringToFilter() {
         return stringToFilter;
     }
 
-    public String getTypeOfFilter() {
+    public static String getTypeOfFilter() {
         return typeOfFilter;
     }
 

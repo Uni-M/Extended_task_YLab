@@ -1,7 +1,7 @@
 package xml_parser.print_info;
 
-import xml_parser.appConfig.argument_parser.ArgumentParser;
-import xml_parser.appConfig.argument_parser.FinderArgForFilter;
+import xml_parser.AppConfig.argument_parser.ArgumentParser;
+import static xml_parser.AppConfig.argument_parser.FinderArgForFilter.argumentForPrinting;
 import xml_parser.model.Node;
 import xml_parser.print_info.serch_types.*;
 
@@ -9,12 +9,14 @@ import java.util.List;
 
 public class PrintInfo {
 
-    private static final FinderArgForFilter faff = new FinderArgForFilter();
-    private static final SearchType searchType = faff.argumentForPrinting();
+//    private static final FinderArgForFilter faff = new FinderArgForFilter();
+//    private static final SearchType searchType = faff.argumentForPrinting();
+//
+//    private static final ArgumentParser argumentParser = new ArgumentParser();
+//    private static final String stringToFilter = argumentParser.getStringToFilter();
 
-    private static final ArgumentParser argumentParser = new ArgumentParser();
-    private static final String stringToFilter = argumentParser.getStringToFilter();
-
+    static SearchType searchType = argumentForPrinting();
+    static String stringToFilter = ArgumentParser.getStringToFilter();
 
     public static void printToConsole(List<Node> children) {
 
