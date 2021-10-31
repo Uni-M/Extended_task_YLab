@@ -2,7 +2,7 @@ package xml_parser.parser;
 
 import xml_parser.model.Node;
 import xml_parser.model.Root;
-import static xml_parser.AppConfig.XConstant.*;
+import static xml_parser.appConfig.XConstant.*;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
@@ -54,14 +54,6 @@ public class NodeParser extends DefaultHandler {
                     addFileName();
                 }
                 break;
-//            case "children": {
-//
-//                if (fileInDirectory.size() > 0) {
-//                    fileInDirectory.remove(fileInDirectory.size() - 1);
-//                }
-//                break;
-//            }
-
         }
     }
 
@@ -79,7 +71,7 @@ public class NodeParser extends DefaultHandler {
         StringBuilder fname = new StringBuilder();
 
         for (String s : fileInDirectory) {
-            fname.append(SPLIT_DIR+s);
+            fname.append(SPLIT_DIR).append(s);
         }
         node.setName(fname.toString());
         children.add(node);

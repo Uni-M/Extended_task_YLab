@@ -10,7 +10,6 @@ public class RegularType implements Type{
     public void printToConsole(String arg, Node child) {
         String regex = arg.substring(1, arg.length()-1);
         final Pattern pattern = Pattern.compile(regex,Pattern.DOTALL);
-        //final Pattern pattern = Pattern.compile(".*?[a-z]{4}-\d+\.[a-z]+",Pattern.DOTALL);
         Matcher matcher = pattern.matcher(child.getName());
         while (matcher.find()) {
             System.out.println(child.getName());

@@ -1,17 +1,20 @@
-package xml_parser.AppConfig.argument_parser;
+package xml_parser.appConfig.argument_parser;
 
 import xml_parser.print_info.serch_types.SearchType;
 
-import static xml_parser.AppConfig.XConstant.KEY_MACK;
-import static xml_parser.AppConfig.XConstant.KEY_MACK_REGULAR;
+import static xml_parser.appConfig.XConstant.KEY_MACK;
+import static xml_parser.appConfig.XConstant.KEY_MACK_REGULAR;
 
 
 public class FinderArgForFilter {
-    private static final String typeOfFilter = ArgumentParser.getTypeOfFilter();
-    private static final String stringToFilter = ArgumentParser.getStringToFilter();
+
+    ArgumentParser argumentParser = new ArgumentParser();
+
+    private final String typeOfFilter = argumentParser.getTypeOfFilter();
+    private final String stringToFilter = argumentParser.getStringToFilter();
 
 
-    public static SearchType argumentForPrinting(){
+    public SearchType argumentForPrinting(){
 
         switch (typeOfFilter){
 

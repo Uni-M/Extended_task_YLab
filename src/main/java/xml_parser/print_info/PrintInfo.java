@@ -1,40 +1,40 @@
 package xml_parser.print_info;
 
-import xml_parser.AppConfig.argument_parser.ArgumentParser;
+import xml_parser.appConfig.argument_parser.ArgumentParser;
+import xml_parser.appConfig.argument_parser.FinderArgForFilter;
 import xml_parser.model.Node;
 import xml_parser.print_info.serch_types.*;
-import static xml_parser.AppConfig.argument_parser.FinderArgForFilter.argumentForPrinting;
 
 import java.util.List;
 
-
 public class PrintInfo {
+
+    private static final FinderArgForFilter faff = new FinderArgForFilter();
+    private static final SearchType searchType = faff.argumentForPrinting();
+
+    private static final ArgumentParser argumentParser = new ArgumentParser();
+    private static final String stringToFilter = argumentParser.getStringToFilter();
+
 
     public static void printToConsole(List<Node> children) {
 
-        SearchType searchType = argumentForPrinting();
-        String stringToFilter = ArgumentParser.getStringToFilter();
-
-        switch (searchType){
-
-            case Regular:              //create class regular_type
+        switch (searchType) {
+            case Regular -> {              //create class regular_type
                 RegularType regularType = new RegularType();
                 regularType.checkAllNodes(stringToFilter, children);
-                break;
-
-            case Mask:                  //create class mask_type
+            }
+            case Mask -> {                  //create class mask_type
                 MaskType maskType = new MaskType();
                 maskType.checkAllNodes(stringToFilter, children);
-                break;
-
-            case Equals:                // create class equals_type
+            }
+            case Equals -> {                // create class equals_type
                 EqualsType equalsType = new EqualsType();
-                equalsType.checkAllNodes(stringToFilter,children);
-                break;
-
-            case Full:                   //create class full_type
+                equalsType.checkAllNodes(stringToFilter, children);
+            }
+            case Full -> {                   //create class full_type
                 FullType fullType = new FullType();
                 fullType.checkAllNodes(stringToFilter, children);
+            }
         }
     }
 }

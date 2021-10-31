@@ -1,6 +1,6 @@
 package xml_parser;
 
-import xml_parser.AppConfig.exeptions.*;
+import xml_parser.appConfig.exeptions.*;
 import xml_parser.model.Root;
 import xml_parser.parser.SaxParser;
 
