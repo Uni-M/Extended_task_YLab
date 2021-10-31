@@ -9,12 +9,6 @@ import java.util.List;
 
 public class PrintInfo {
 
-//    private static final FinderArgForFilter faff = new FinderArgForFilter();
-//    private static final SearchType searchType = faff.argumentForPrinting();
-//
-//    private static final ArgumentParser argumentParser = new ArgumentParser();
-//    private static final String stringToFilter = argumentParser.getStringToFilter();
-
     static SearchType searchType = argumentForPrinting();
     static String stringToFilter = ArgumentParser.getStringToFilter();
 
