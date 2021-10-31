@@ -1,16 +1,16 @@
-package xml_parser.AppConfig.argument_parser;
+package xml_parser.appConfig.argument_parser;
 
-import xml_parser.AppConfig.exeptions.*;
+import xml_parser.appConfig.exeptions.*;
 
 import java.io.File;
 
-import static xml_parser.AppConfig.XConstant.*;
+import static xml_parser.appConfig.XConstant.*;
 
 public class ArgumentParser {
 
     private String inputFileName;
-    private static String typeOfFilter;
-    private static String stringToFilter;
+    private String typeOfFilter = "";
+    private String stringToFilter = "";
 
 
     public void ArgumentProcess(String[] args) throws ArgumentException { //Это старт парсинга
@@ -37,7 +37,7 @@ public class ArgumentParser {
 
     
     private String fileExists(String fileName) throws ArgumentException {  //Вот проверка
-        String path = System.getProperty("test_files.xml");
+        String path = System.getProperty("user.dir");
         File f = new File(path + File.separator + fileName);
         if(f.exists() && f.isFile()){
             return f.getAbsolutePath();
@@ -47,11 +47,11 @@ public class ArgumentParser {
     }
 
 
-    public static String getStringToFilter() {
+    public String getStringToFilter() {
         return stringToFilter;
     }
 
-    public static String getTypeOfFilter() {
+    public String getTypeOfFilter() {
         return typeOfFilter;
     }
 
