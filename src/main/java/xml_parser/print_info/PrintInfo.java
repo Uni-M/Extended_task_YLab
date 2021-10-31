@@ -4,6 +4,10 @@ import xml_parser.AppConfig.argument_parser.ArgumentParser;
 import static xml_parser.AppConfig.argument_parser.FinderArgForFilter.argumentForPrinting;
 import xml_parser.model.Node;
 import xml_parser.print_info.serch_types.*;
+import xml_parser.print_info.serch_types.filter_type_class.EqualsType;
+import xml_parser.print_info.serch_types.filter_type_class.FullType;
+import xml_parser.print_info.serch_types.filter_type_class.MaskType;
+import xml_parser.print_info.serch_types.filter_type_class.RegularType;
 
 import java.util.List;
 
