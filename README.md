@@ -1,8 +1,7 @@
-# Extended_task_YLab
+# Java Developer test assignment
 
-Java Developer test assignment
+### Introduction
 
-Introduction
 
 You are provided with xml file containing a representation of files hierarchy. Example:
 
@@ -35,7 +34,7 @@ You are provided with xml file containing a representation of files hierarchy. E
 
 One node may be either file or directory, which is defined by attribute is-filex
 
-What to do?
+### What to do?
 
 Implement command-line application which will output all full paths for the given input.
 
@@ -45,54 +44,59 @@ where <xml_file> is a path to the provided xml file; <input> is search string to
 
 
 
-Examples
+### Examples
 
-No search input:
+#### No search input:
 
     $ java -jar assignment.jar -f test-files.xml
 
+<pre>
 /file-776194140.xml
 
 /dir-880176375/file-1073842118.java
 
 /dir-880176375/dir-2145307015/file-1498940214.xhtml
+</pre>
 
 
 
 
-Exact search input:
+#### Exact search input:
 
     $ java -jar assignment.jar -f test-files.xml -s file-1498940214.xhtml
 
+<pre>
 /dir-880176375/dir-2145307015/file-1498940214.xhtml
+</pre>
 
 
 
-
-Simple search input:
+#### Simple search input:
 
     $ java -jar assignment.jar -f test-files.xml -s ‘*.java’
-
+    
+<pre>
 /dir-880176375/file-1073842118.java	
+</pre>
 
 
 
-
-Extended search input:
+#### Extended search input:
 
     $ java -jar assignment.jar -f test-files.xml -S ‘.*?[a-z]{4}-\d+\.[a-z]+’
 
+<pre>
 /file-776194140.xml
 
 /dir-880176375/file-1073842118.java
 
 /dir-880176375/dir-2145307015/file-1498940214.xhtml
+</pre>
 
 
 
 
-
-Compilation and test environment
+#### Compilation and test environment
 
 Prepare Maven project. It is allowed to use any libraries you might find useful; Java SE 8+ or Kotlin.
 
