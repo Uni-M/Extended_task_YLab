@@ -54,6 +54,10 @@ public class NodeParser extends DefaultHandler {
                     addFileName();
                 }
                 break;
+            case FOLDER_NODE:
+                if (fileInDirectory.size() > 0){
+                    fileInDirectory.remove(fileInDirectory.size()-1);
+                }
         }
     }
 
