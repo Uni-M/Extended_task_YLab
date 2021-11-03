@@ -34,20 +34,16 @@ public class ArgumentParser {
     }
 
     private void validator(String[] args) throws ArgumentException {
-
+        ////////////////////////////////
+        ///////////work but/////////////
+        ///////need to be fixed/////////
+        ////////////////////////////////
         if (!Arrays.asList(args).contains(KEY_INPUT_FILE)) {
             throw new ArgumentException("not supported key");
         }
         if (args.length > 2 && !Arrays.asList(args).contains(KEY_MACK_REGULAR ) && !Arrays.asList(args).contains(KEY_MACK)){
             throw new ArgumentException("not supported key");
         }
-
-//        if (!args[0].equals(KEY_INPUT_FILE)) {
-//            throw new ArgumentException("not supported key:" + args[0]);
-//        }
-//        if (args.length > 2 && args[2].equals(KEY_MACK_REGULAR) && args[2].equals(KEY_MACK)){
-//            throw new ArgumentException("not supported key:" + args[2]);
-//        }
     }
 
     
