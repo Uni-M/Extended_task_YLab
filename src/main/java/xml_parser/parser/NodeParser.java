@@ -3,27 +3,27 @@ package xml_parser.parser;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 import xml_parser.appconfig.argument_parser.ArgumentParser;
-import xml_parser.search_factory.SearchFactory;
-import xml_parser.search_factory.Type;
+import xml_parser.comparator.SearchFactory;
+import xml_parser.comparator.AbstractComparator;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static xml_parser.appconfig.argument_parser.FinderArgForFilter.argumentForPrinting;
 import static xml_parser.appconfig.constant.XConstant.*;
 
 public class NodeParser extends DefaultHandler {
 
-    private String currentValue = "";
     private static List<String> folders = new ArrayList<>();
 
-
+    private String currentValue = "";
     private static boolean isFile = false; //XML attribute (~~ is-file="true")
-    Type filter;    //filter for printing
+    AbstractComparator filter;    //filter for printing
 
     @Override
     public void startDocument() {
         SearchFactory searchFactory = new SearchFactory();
-        filter = searchFactory.create();
+        filter = searchFactory.create(argumentForPrinting());
     }
 
     @Override
@@ -42,13 +42,13 @@ public class NodeParser extends DefaultHandler {
 
         switch (qName){
             case ACTIVE_NODE:
-                if (isFile == false) {
+                if (!isFile) {
                     addFolderName();
                 }
                 break;
             case INCLUDE_NODE:
-                if (isFile == true){
-                    checkByFilter();///тут вызываем принтФайл
+                if (isFile){
+                    checkByFilter();
                 }
                 break;
             case FOLDER_NODE:
@@ -68,12 +68,9 @@ public class NodeParser extends DefaultHandler {
 
 
     private void checkByFilter(){
-        filter.checkAllNodes(ArgumentParser.getStringToFilter(), currentValue);
+        filter.compareFileName(ArgumentParser.getStringToFilter(), currentValue);
         isFile = false;
         currentValue = "";
-//        if (folders.size() > 0) {
-//            folders.remove(folders.size() - 1);
-//        }
     }
 
     public static List<String> getFolders(){

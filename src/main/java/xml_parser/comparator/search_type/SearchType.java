@@ -1,4 +1,4 @@
-package xml_parser.search_factory;
+package xml_parser.comparator.search_type;
 
 public enum SearchType {
     Full,

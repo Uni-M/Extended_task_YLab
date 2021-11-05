@@ -12,7 +12,7 @@ public class ArgumentParser {
     private static String typeOfFilter = "";
     private static String stringToFilter = "";
 
-    public void ArgumentProcess(String[] args) throws ArgumentException { //Это старт парсинга
+    public void argumentProcess(String[] args) throws ArgumentException { //Это старт парсинга
         validator(args);
         storeParams(args);
     }

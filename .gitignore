@@ -1,7 +1,7 @@
 # Project exclude paths
 /target/
 
-# JetBrains IDE
+### JetBrains IDE
 .idea/
 
 # Created by https://www.toptal.com/developers/gitignore/api/java
@@ -21,6 +21,7 @@
 .mtj.tmp/
 
 # Package Files #
+test-files.xml
 *.jar
 *.war
 *.nar

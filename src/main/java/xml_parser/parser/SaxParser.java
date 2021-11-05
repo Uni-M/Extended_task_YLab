@@ -14,7 +14,7 @@ public class SaxParser {
     public void parse(String[] args) throws ArgumentException {
 
         ArgumentParser argumentParser = new ArgumentParser();
-        argumentParser.ArgumentProcess(args);
+        argumentParser.argumentProcess(args);
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         NodeParser handler = new NodeParser();

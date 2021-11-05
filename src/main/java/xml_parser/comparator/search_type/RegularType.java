@@ -1,13 +1,13 @@
-package xml_parser.search_factory.search_type;
+package xml_parser.comparator.search_type;
 
-import xml_parser.search_factory.Type;
+import xml_parser.comparator.AbstractComparator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static xml_parser.appconfig.constant.XConstant.*;
 
-public class RegularType extends Type {
+public class RegularType extends AbstractComparator {
 
     @Override
     public String printToConsole(String arg, String child) {

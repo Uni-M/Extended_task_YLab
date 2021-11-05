@@ -1,13 +1,10 @@
-package xml_parser.search_factory;
+package xml_parser.comparator;
 
-import xml_parser.appconfig.argument_parser.FinderArgForFilter;
-import xml_parser.search_factory.search_type.*;
+import xml_parser.comparator.search_type.*;
 
 public class SearchFactory {
 
-    SearchType filter = FinderArgForFilter.argumentForPrinting();
-
-    public Type create(){
+    public AbstractComparator create(SearchType filter){
         switch (filter){
             case Regular -> {              //create class regular_type
                 return new RegularType();
@@ -21,7 +18,7 @@ public class SearchFactory {
             case Full -> {                   //create class full_type
                 return new FullType();
             }
+            default -> throw new IllegalStateException("Unexpected type: " + filter);
         }
-        return null;
     }
 }

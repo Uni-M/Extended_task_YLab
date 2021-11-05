@@ -1,21 +1,19 @@
-package xml_parser.search_factory;
-
-import xml_parser.parser.NodeParser;
+package xml_parser.comparator;
 
 import java.util.List;
 
 import static xml_parser.appconfig.constant.XConstant.SPLIT_DIR;
+import static xml_parser.parser.NodeParser.getFolders;
 
-public abstract class Type {
 
-    public void checkAllNodes(String arg, String node){
+public abstract class AbstractComparator {
 
-        List <String> folders = NodeParser.getFolders();
+    public void compareFileName(String arg, String fileName){
 
-        String resultOfFilter = printToConsole(arg, node);
+        String resultOfFilter = printToConsole(arg, fileName);
         if (resultOfFilter != null && resultOfFilter.length() > 0){
             System.out.print(SPLIT_DIR);
-            for (String folder: folders){
+            for (String folder: getFolders()){
                 System.out.print(folder + SPLIT_DIR);
             }
             System.out.println(resultOfFilter);
