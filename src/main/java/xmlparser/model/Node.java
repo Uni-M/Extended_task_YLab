@@ -1,4 +1,4 @@
-package xml_parser.model;
+package xmlparser.model;
 
 public class Node {
 

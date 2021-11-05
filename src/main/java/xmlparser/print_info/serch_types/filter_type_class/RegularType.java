@@ -1,13 +1,13 @@
-package xml_parser.print_info.serch_types.filter_type_class;
+package xmlparser.print_info.serch_types.filter_type_class;
 
-import xml_parser.model.Node;
-import xml_parser.print_info.serch_types.Type;
+import xmlparser.model.Node;
+import xmlparser.print_info.serch_types.Type;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static xml_parser.AppConfig.XConstant.APOSTROPHE1;
-import static xml_parser.AppConfig.XConstant.APOSTROPHE2;
+import static xmlparser.AppConfig.XConstant.APOSTROPHE1;
+import static xmlparser.AppConfig.XConstant.APOSTROPHE2;
 
 public class RegularType implements Type {
     @Override

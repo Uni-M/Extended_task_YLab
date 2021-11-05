@@ -1,7 +1,7 @@
-package xml_parser.print_info.serch_types.filter_type_class;
+package xmlparser.print_info.serch_types.filter_type_class;
 
-import xml_parser.model.Node;
-import xml_parser.print_info.serch_types.Type;
+import xmlparser.model.Node;
+import xmlparser.print_info.serch_types.Type;
 
 public class EqualsType implements Type {
 

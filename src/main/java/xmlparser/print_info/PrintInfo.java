@@ -1,13 +1,13 @@
-package xml_parser.print_info;
+package xmlparser.print_info;
 
-import xml_parser.AppConfig.argument_parser.ArgumentParser;
-import static xml_parser.AppConfig.argument_parser.FinderArgForFilter.argumentForPrinting;
-import xml_parser.model.Node;
-import xml_parser.print_info.serch_types.*;
-import xml_parser.print_info.serch_types.filter_type_class.EqualsType;
-import xml_parser.print_info.serch_types.filter_type_class.FullType;
-import xml_parser.print_info.serch_types.filter_type_class.MaskType;
-import xml_parser.print_info.serch_types.filter_type_class.RegularType;
+import xmlparser.AppConfig.argument_parser.ArgumentParser;
+import static xmlparser.AppConfig.argument_parser.FinderArgForFilter.argumentForPrinting;
+import xmlparser.model.Node;
+import xmlparser.print_info.serch_types.*;
+import xmlparser.print_info.serch_types.filter_type_class.EqualsType;
+import xmlparser.print_info.serch_types.filter_type_class.FullType;
+import xmlparser.print_info.serch_types.filter_type_class.MaskType;
+import xmlparser.print_info.serch_types.filter_type_class.RegularType;
 
 import java.util.List;
 

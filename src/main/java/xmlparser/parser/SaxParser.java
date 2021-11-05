@@ -1,8 +1,9 @@
-package xml_parser.parser;
+package xmlparser.parser;
 
 import org.xml.sax.SAXException;
-import xml_parser.appconfig.argument_parser.ArgumentParser;
-import xml_parser.exeption.*;
+import xmlparser.AppConfig.argument_parser.ArgumentParser;
+import xmlparser.AppConfig.exeptions.*;
+import xmlparser.model.Root;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -11,10 +12,7 @@ import java.io.IOException;
 
 public class SaxParser {
 
-    public void parse(String[] args) throws ArgumentException {
-
-        ArgumentParser argumentParser = new ArgumentParser();
-        argumentParser.ArgumentProcess(args);
+    public Root parse(String[] args) throws ArgumentException {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         NodeParser handler = new NodeParser();
@@ -24,9 +22,11 @@ public class SaxParser {
             parser = factory.newSAXParser();
         } catch (Exception e) {
             System.out.println("Open sax parser error " + e);
-            return;
+            return null;
         }
 
+        ArgumentParser argumentParser = new ArgumentParser();
+        argumentParser.ArgumentProcess(args);
 
         File file = new File(argumentParser.getInputFileName());
 
@@ -34,9 +34,12 @@ public class SaxParser {
             parser.parse(file,handler);
         } catch (SAXException e) {
             System.out.println("sax parsing error " + e);
+            return null;
         } catch (IOException e) {
             System.out.println("IO parsing error " + e);
+            return null;
         }
+
+        return handler.getRoot();
     }
 }
-

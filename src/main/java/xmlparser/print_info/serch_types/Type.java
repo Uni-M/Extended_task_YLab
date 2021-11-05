@@ -1,6 +1,6 @@
-package xml_parser.print_info.serch_types;
+package xmlparser.print_info.serch_types;
 
-import xml_parser.model.Node;
+import xmlparser.model.Node;
 
 import java.util.List;
 

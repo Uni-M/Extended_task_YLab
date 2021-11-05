@@ -1,29 +1,34 @@
-package xml_parser.parser;
+package xmlparser.parser;
+
+import xmlparser.model.Node;
+import xmlparser.model.Root;
+import static xmlparser.AppConfig.XConstant.*;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
-import xml_parser.appconfig.argument_parser.ArgumentParser;
-import xml_parser.search_factory.SearchFactory;
-import xml_parser.search_factory.Type;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static xml_parser.appconfig.constant.XConstant.*;
 
 public class NodeParser extends DefaultHandler {
 
-    private String currentValue = "";
-    private static List<String> folders = new ArrayList<>();
+    Root root = new Root();
 
+    private List<Node> children = new ArrayList<>();
+
+    private String currentValue = "";
+    private ArrayList<String> fileInDirectory = new ArrayList<>();
 
     private static boolean isFile = false; //XML attribute (~~ is-file="true")
-    Type filter;    //filter for printing
+
+    public Root getRoot(){
+        return root;
+    }
 
     @Override
-    public void startDocument() {
-        SearchFactory searchFactory = new SearchFactory();
-        filter = searchFactory.create();
+    public void endDocument() {
+        root.setChildren(children);
     }
 
     @Override
@@ -36,24 +41,22 @@ public class NodeParser extends DefaultHandler {
         }
     }
 
-
+    
     @Override
     public void endElement(String uri, String localName, String qName) {
 
         switch (qName){
             case ACTIVE_NODE:
-                if (isFile == false) {
-                    addFolderName();
-                }
+                addFolderName();
                 break;
             case INCLUDE_NODE:
                 if (isFile == true){
-                    checkByFilter();///тут вызываем принтФайл
+                    addFileName();
                 }
                 break;
             case FOLDER_NODE:
-                if (folders.size() > 0){
-                    folders.remove(folders.size()-1);
+                if (fileInDirectory.size() > 0){
+                    fileInDirectory.remove(fileInDirectory.size()-1);
                 }
         }
     }
@@ -61,24 +64,25 @@ public class NodeParser extends DefaultHandler {
 
     private void addFolderName(){
         if (!currentValue.equals(SPLIT_DIR)){
-            folders.add(currentValue);
+            fileInDirectory.add(currentValue);
         }
         currentValue = "";
     }
 
 
-    private void checkByFilter(){
-        filter.checkAllNodes(ArgumentParser.getStringToFilter(), currentValue);
+    private void addFileName(){
+        Node node = new Node();
+        StringBuilder fname = new StringBuilder();
+
+        for (String s : fileInDirectory) {
+            fname.append(SPLIT_DIR).append(s);
+        }
+        node.setName(fname.toString());
+        children.add(node);
         isFile = false;
-        currentValue = "";
-//        if (folders.size() > 0) {
-//            folders.remove(folders.size() - 1);
-//        }
+        fileInDirectory.remove(fileInDirectory.size()-1);
     }
 
-    public static List<String> getFolders(){
-        return folders;
-    }
 
     @Override
     public void characters(char[] ch, int start, int length) {

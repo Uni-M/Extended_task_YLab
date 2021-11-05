@@ -1,9 +1,9 @@
-package xml_parser.AppConfig.argument_parser;
+package xmlparser.AppConfig.argument_parser;
 
-import xml_parser.print_info.serch_types.SearchType;
+import xmlparser.print_info.serch_types.SearchType;
 
-import static xml_parser.AppConfig.XConstant.KEY_MACK;
-import static xml_parser.AppConfig.XConstant.KEY_MACK_REGULAR;
+import static xmlparser.AppConfig.XConstant.KEY_MACK;
+import static xmlparser.AppConfig.XConstant.KEY_MACK_REGULAR;
 
 
 public class FinderArgForFilter {

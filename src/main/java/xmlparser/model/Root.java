@@ -1,6 +1,6 @@
-package xml_parser.model;
+package xmlparser.model;
 
-import xml_parser.print_info.PrintInfo;
+import xmlparser.print_info.PrintInfo;
 
 import java.util.List;
 

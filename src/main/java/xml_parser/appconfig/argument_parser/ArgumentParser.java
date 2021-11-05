@@ -1,26 +1,23 @@
-package xml_parser.AppConfig.argument_parser;
+package xml_parser.appconfig.argument_parser;
 
-import xml_parser.AppConfig.exeptions.*;
+import xml_parser.exeption.*;
 
 import java.io.File;
 import java.util.Arrays;
 
-import static xml_parser.AppConfig.XConstant.*;
+import static xml_parser.appconfig.constant.XConstant.*;
 
 public class ArgumentParser {
-
     private String inputFileName;
     private static String typeOfFilter = "";
     private static String stringToFilter = "";
-
 
     public void ArgumentProcess(String[] args) throws ArgumentException { //Это старт парсинга
         validator(args);
         storeParams(args);
     }
 
-    private void storeParams(String[] args) throws ArgumentException{
-
+    private void storeParams(String[] args) throws ArgumentException {
         for (int i = 0; i < args.length; i++){
             switch (args[i]) {
                 case KEY_INPUT_FILE -> inputFileName = fileExists(args[i + 1]); // — это получение имени файла + проверка//
@@ -32,6 +29,7 @@ public class ArgumentParser {
             }
         }
     }
+
 
     private void validator(String[] args) throws ArgumentException {
 
@@ -48,17 +46,25 @@ public class ArgumentParser {
         }
     }
 
-    
+
     private String fileExists(String fileName) throws ArgumentException {  //Вот проверка
         String path = System.getProperty("user.dir");
         File f = new File(path + File.separator + fileName);
+
+        //version for full name of input file
+//        File f;
+//        if (!fileName.contains(path)) {
+//            f = new File(path + File.separator + fileName);
+//        }else{
+//            f = new File(fileName);
+//        }
+
         if(f.exists() && f.isFile()){
             return f.getAbsolutePath();
         }else{
             throw new ArgumentException("input file doesn't exists");
         }
     }
-
 
     public static String getStringToFilter() {
         return stringToFilter;
@@ -72,8 +78,3 @@ public class ArgumentParser {
         return inputFileName;
     }
 }
-
-
-
-
-
