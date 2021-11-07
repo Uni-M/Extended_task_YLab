@@ -18,7 +18,7 @@ public class NodeParser extends DefaultHandler {
 
     private String currentValue = "";
     private static boolean isFile = false; //XML attribute (~~ is-file="true")
-    AbstractComparator filter;    //filter for printing
+    private AbstractComparator filter;    //filter for printing
 
     @Override
     public void startDocument() {
@@ -54,6 +54,9 @@ public class NodeParser extends DefaultHandler {
                 if (folders.size() > 0){
                     folders.remove(folders.size()-1);
                 }
+                break;
+            default:
+                throw new IllegalStateException("Unexpected qName: " + qName);
         }
     }
 
@@ -74,6 +77,10 @@ public class NodeParser extends DefaultHandler {
 
     public static List<String> getFolders(){
         return folders;
+    }
+
+    public String getCurrentValue() {
+        return currentValue;
     }
 
     @Override
