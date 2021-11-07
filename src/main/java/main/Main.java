@@ -1,7 +1,7 @@
-package xml_parser;
+package main;
 
-import xml_parser.exeption.ArgumentException;
-import xml_parser.parser.SaxParser;
+import exception.ArgumentException;
+import parser.SaxParser;
 
 public class Main {
     public static void main(String[] args) throws ArgumentException {

@@ -1,6 +1,6 @@
-package xml_parser.comparator.search_type;
+package comparator.search_type;
 
-import xml_parser.comparator.AbstractComparator;
+import comparator.AbstractComparator;
 
 public class EqualsType extends AbstractComparator {
     @Override

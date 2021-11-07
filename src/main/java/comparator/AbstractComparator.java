@@ -1,9 +1,7 @@
-package xml_parser.comparator;
+package comparator;
 
-import java.util.List;
-
-import static xml_parser.appconfig.constant.XConstant.SPLIT_DIR;
-import static xml_parser.parser.NodeParser.getFolders;
+import static appconfig.constant.XConstant.SPLIT_DIR;
+import static parser.NodeParser.getFolders;
 
 
 public abstract class AbstractComparator {

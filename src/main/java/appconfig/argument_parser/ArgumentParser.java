@@ -1,18 +1,18 @@
-package xml_parser.appconfig.argument_parser;
+package appconfig.argument_parser;
 
-import xml_parser.exeption.*;
+import exception.ArgumentException;
 
 import java.io.File;
 import java.util.Arrays;
 
-import static xml_parser.appconfig.constant.XConstant.*;
+import static appconfig.constant.XConstant.*;
 
 public class ArgumentParser {
     private String inputFileName;
     private static String typeOfFilter = "";
     private static String stringToFilter = "";
 
-    public void argumentProcess(String[] args) throws ArgumentException { //Это старт парсинга
+    public void argumentProcess(String[] args) throws ArgumentException { //start of parsing
         validator(args);
         storeParams(args);
     }
@@ -23,8 +23,8 @@ public class ArgumentParser {
                 case KEY_INPUT_FILE -> inputFileName = fileExists(args[i + 1]); // — это получение имени файла + проверка//
 
                 case KEY_MACK, KEY_MACK_REGULAR -> {
-                    typeOfFilter += args[i];
-                    stringToFilter += args[i + 1];
+                    typeOfFilter = args[i];
+                    stringToFilter = args[i + 1];
                 }
             }
         }
@@ -49,15 +49,15 @@ public class ArgumentParser {
 
     private String fileExists(String fileName) throws ArgumentException {  //Вот проверка
         String path = System.getProperty("user.dir");
-        File f = new File(path + File.separator + fileName);
+//        File f = new File(path + File.separator + fileName);
 
         //version for full name of input file
-//        File f;
-//        if (!fileName.contains(path)) {
-//            f = new File(path + File.separator + fileName);
-//        }else{
-//            f = new File(fileName);
-//        }
+        File f;
+        if (!fileName.contains(path)) {
+            f = new File(path + File.separator + fileName);
+        }else{
+            f = new File(fileName);
+        }
 
         if(f.exists() && f.isFile()){
             return f.getAbsolutePath();

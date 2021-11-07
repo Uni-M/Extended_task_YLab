@@ -1,11 +1,11 @@
-package xml_parser.comparator.search_type;
+package comparator.search_type;
 
-import xml_parser.comparator.AbstractComparator;
+import comparator.AbstractComparator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static xml_parser.appconfig.constant.XConstant.APOSTROPHE1;
+import static appconfig.constant.XConstant.APOSTROPHE;
 
 public class MaskType extends AbstractComparator {
 
@@ -27,7 +27,7 @@ public class MaskType extends AbstractComparator {
 
         String argWithoutApostrophe = arg.replaceAll("^'+|'+(?!\\S)", "");
 
-        String substring1 = argWithoutApostrophe.substring(argWithoutApostrophe.indexOf(APOSTROPHE1)+1, argWithoutApostrophe.indexOf("*"));
+        String substring1 = argWithoutApostrophe.substring(argWithoutApostrophe.indexOf(APOSTROPHE)+1, argWithoutApostrophe.indexOf("*"));
         String substring2 = argWithoutApostrophe.substring(argWithoutApostrophe.indexOf("*")+1, argWithoutApostrophe.length()-1);
 
         return substring1 + ".*?[ 0-9 a-f A-F ]{0,260}+" + substring2;

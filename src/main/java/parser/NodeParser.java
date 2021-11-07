@@ -1,16 +1,16 @@
-package xml_parser.parser;
+package parser;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
-import xml_parser.appconfig.argument_parser.ArgumentParser;
-import xml_parser.comparator.SearchFactory;
-import xml_parser.comparator.AbstractComparator;
+import appconfig.argument_parser.ArgumentParser;
+import comparator.SearchFactory;
+import comparator.AbstractComparator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static xml_parser.appconfig.argument_parser.FinderArgForFilter.argumentForPrinting;
-import static xml_parser.appconfig.constant.XConstant.*;
+import static appconfig.argument_parser.FinderArgForFilter.argumentForPrinting;
+import static appconfig.constant.XConstant.*;
 
 public class NodeParser extends DefaultHandler {
 
@@ -35,7 +35,6 @@ public class NodeParser extends DefaultHandler {
             }
         }
     }
-
 
     @Override
     public void endElement(String uri, String localName, String qName) {

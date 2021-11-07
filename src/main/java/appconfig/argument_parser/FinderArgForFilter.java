@@ -1,8 +1,8 @@
-package xml_parser.appconfig.argument_parser;
+package appconfig.argument_parser;
 
-import xml_parser.comparator.search_type.SearchType;
-import static xml_parser.appconfig.constant.XConstant.*;
-import static xml_parser.comparator.search_type.SearchType.*;
+import comparator.search_type.SearchType;
+import static appconfig.constant.XConstant.*;
+import static comparator.search_type.SearchType.*;
 
 public class FinderArgForFilter {
 

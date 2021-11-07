@@ -1,4 +1,4 @@
-package xml_parser.appconfig.constant;
+package appconfig.constant;
 
 public class XConstant {
     public static final String KEY_INPUT_FILE = "-f";
@@ -10,6 +10,5 @@ public class XConstant {
     public static final String INCLUDE_NODE = "child";
     public static final String FOLDER_NODE = "children";
     public static final String SPLIT_DIR = "/";
-    public static final String APOSTROPHE1 = "‘";
-    public static final String APOSTROPHE2 = "’";
+    public static final String APOSTROPHE = "‘";
 }

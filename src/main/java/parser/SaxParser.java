@@ -1,8 +1,8 @@
-package xml_parser.parser;
+package parser;
 
+import exception.ArgumentException;
 import org.xml.sax.SAXException;
-import xml_parser.appconfig.argument_parser.ArgumentParser;
-import xml_parser.exeption.*;
+import appconfig.argument_parser.ArgumentParser;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
