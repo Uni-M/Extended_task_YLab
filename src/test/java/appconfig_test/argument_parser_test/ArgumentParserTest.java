@@ -13,7 +13,7 @@ import static appconfig.argument_parser.ArgumentParser.*;
 class ArgumentParserTest {
 
     private ArgumentParser argumentParser;
-    String [] args;
+    private String [] args;
 
     @BeforeEach
     void prepare(){

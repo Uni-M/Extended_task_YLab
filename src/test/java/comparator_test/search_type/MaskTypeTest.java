@@ -14,10 +14,14 @@ public class MaskTypeTest {
 
     private MaskType maskType;
 
+    @BeforeEach
+    void prepare(){
+        maskType = new MaskType();
+    }
+
     @DisplayName("Correct mask test")
     @Test
     void PrintToConsoleCorrectMaskTest(){
-        maskType = new MaskType();
         Assertions.assertEquals("file-1073842118.java",
                                 maskType.printToConsole("‘*.java’", "file-1073842118.java"));
         Assertions.assertEquals("file-1073842118.java",
@@ -29,7 +33,6 @@ public class MaskTypeTest {
     @DisplayName("Incorrect mask test")
     @Test
     void PrintToConsoleIncorrectMaskTest(){
-        maskType = new MaskType();
         Assertions.assertNotEquals("file-1073842118.java",
                                    maskType.printToConsole("‘*sf*’", "file-1073842118.java"));
         Assertions.assertNotEquals("file-1073842118.java",
@@ -39,8 +42,6 @@ public class MaskTypeTest {
     @DisplayName("Exception catching test")
     @Test
      void PrintToConsoleExceptionTest() throws StringIndexOutOfBoundsException {
-        maskType = new MaskType();
-
         Throwable thrown = assertThrows(StringIndexOutOfBoundsException.class, () -> {
             Assertions.assertEquals("file-1073842118.java",
                     maskType.printToConsole("*", "file-1073842118.java"));
