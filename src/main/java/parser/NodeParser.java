@@ -56,7 +56,7 @@ public class NodeParser extends DefaultHandler {
                 }
                 break;
             default:
-                throw new IllegalStateException("Unexpected qName: " + qName);
+                if(!qName.equals("node")) throw new IllegalStateException("Unexpected qName: " + qName);
         }
     }
 
