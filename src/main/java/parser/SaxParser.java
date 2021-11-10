@@ -17,6 +17,9 @@ public class SaxParser {
         argumentParser.argumentProcess(args);
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setValidating(true);
+        factory.setNamespaceAware(false);
+
         NodeParser handler = new NodeParser();
         SAXParser parser;
 
