@@ -5,7 +5,7 @@ import comparator.AbstractComparator;
 public class EqualsType extends AbstractComparator {
     @Override
     public String printToConsole(String arg, String child) {
-        if (child.contains(arg)){
+        if (child.equals(arg)){
             return child;
         }
         return null;
