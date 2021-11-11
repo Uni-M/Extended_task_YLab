@@ -7,10 +7,8 @@ import java.util.Arrays;
 
 import static appconfig.constant.XConstant.*;
 
-public class ArgumentParser {
-    private String inputFileName;
-    private static String typeOfFilter = "";
-    private static String stringToFilter = "";
+public class ArgumentParser extends ParameterStore {
+//    ParameterStore parameterStore = new ParameterStore();
 
     public void argumentProcess(String[] args) throws ArgumentException { //start of parsing
         validator(args);
@@ -18,13 +16,15 @@ public class ArgumentParser {
     }
 
     private void storeParams(String[] args) throws ArgumentException {
+
+
         for (int i = 0; i < args.length; i++){
             switch (args[i]) {
-                case KEY_INPUT_FILE -> inputFileName = fileExists(args[i + 1]); // — это получение имени файла + проверка//
+                case KEY_INPUT_FILE -> setInputFileName(fileExists(args[i + 1])); // — это получение имени файла + проверка//
 
                 case KEY_MACK, KEY_MACK_REGULAR -> {
-                    typeOfFilter = args[i];
-                    stringToFilter = args[i + 1];
+                    setTypeOfFilter(args[i]);
+                    setStringToFilter(args[i + 1]);
                 }
             }
         }
@@ -64,17 +64,5 @@ public class ArgumentParser {
         }else{
             throw new ArgumentException("input file doesn't exists");
         }
-    }
-
-    public static String getStringToFilter() {
-        return stringToFilter;
-    }
-
-    public static String getTypeOfFilter() {
-        return typeOfFilter;
-    }
-
-    public String getInputFileName() {
-        return inputFileName;
     }
 }

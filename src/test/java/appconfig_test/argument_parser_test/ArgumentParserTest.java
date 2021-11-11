@@ -1,5 +1,6 @@
 package appconfig_test.argument_parser_test;
 
+import appconfig.argument_parser.ParameterStore;
 import org.junit.jupiter.api.*;
 import appconfig.argument_parser.ArgumentParser;
 import exception.ArgumentException;
@@ -50,7 +51,7 @@ class ArgumentParserTest {
         try {
             argumentParser.argumentProcess(args);
 
-            assertTrue( argumentParser.getInputFileName().contains("test-files.xml"));
+            assertTrue(ParameterStore.getInputFileName().contains("test-files.xml"));
             assertEquals("file-1498940214.xhtml", getStringToFilter());
             assertEquals("-s", getTypeOfFilter());
 
@@ -67,7 +68,7 @@ class ArgumentParserTest {
         try {
             argumentParser.argumentProcess(args);
 
-            assertTrue( argumentParser.getInputFileName().contains("test-files.xml"));
+            assertTrue( ParameterStore.getInputFileName().contains("test-files.xml"));
             assertEquals("file-1498940214.xhtml", getStringToFilter());
             assertEquals("-s", getTypeOfFilter());
 
@@ -85,7 +86,7 @@ class ArgumentParserTest {
         try {
             argumentParser.argumentProcess(args);
 
-            assertEquals("D:\\JavaProjects\\YLab_Extended_task\\test-files.xml", argumentParser.getInputFileName());
+            assertEquals("D:\\JavaProjects\\YLab_Extended_task\\test-files.xml", ParameterStore.getInputFileName());
             assertEquals("file-1498940214.xhtml", getStringToFilter());
             assertEquals("-s", getTypeOfFilter());
 

@@ -1,13 +1,8 @@
 package parser;
 
-import appconfig.argument_parser.ArgumentParser;
 import exception.ArgumentException;
 import org.junit.jupiter.api.*;
 
-import static appconfig.argument_parser.ArgumentParser.getStringToFilter;
-import static appconfig.argument_parser.ArgumentParser.getTypeOfFilter;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 

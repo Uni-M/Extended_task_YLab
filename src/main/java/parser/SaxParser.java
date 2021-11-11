@@ -1,8 +1,8 @@
 package parser;
 
+import appconfig.argument_parser.ParameterStore;
 import exception.ArgumentException;
 import org.xml.sax.SAXException;
-import appconfig.argument_parser.ArgumentParser;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -12,9 +12,6 @@ import java.io.IOException;
 public class SaxParser {
 
     public void parse(String[] args) throws ArgumentException {
-
-        ArgumentParser argumentParser = new ArgumentParser();
-        argumentParser.argumentProcess(args);
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setValidating(true);
@@ -31,7 +28,7 @@ public class SaxParser {
         }
 
 
-        File file = new File(argumentParser.getInputFileName());
+        File file = new File(ParameterStore.getInputFileName());
 
         try {
             parser.parse(file,handler);
