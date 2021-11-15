@@ -2,7 +2,7 @@ import appconfig.argument_parser.ArgumentParser;
 import appconfig.argument_parser.ParameterStore;
 import comparator.Comparator;
 import comparator.SearchFactory;
-import exception.ArgumentException;
+import org.xml.sax.SAXException;
 import parser.SaxParser;
 
 import java.io.IOException;
@@ -18,9 +18,12 @@ public class Main {
             Comparator comparator = searchFactory.create(ParameterStore.getSearchType());
             comparator.setMask(ParameterStore.getMack());
             new SaxParser(comparator, ParameterStore.getInputFileName());
-
-        } catch (ArgumentException e) {
-            System.out.println(e.getMessage());
+        } catch (SAXException e) {
+            System.out.println("sax parsing error " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IO parsing error " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Open sax parser error " + e.getMessage());
         }
     }
 }

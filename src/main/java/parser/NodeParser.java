@@ -1,7 +1,6 @@
 package parser;
 
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import comparator.Comparator;
 
@@ -18,12 +17,6 @@ public class NodeParser extends DefaultHandler {
     private boolean isFile = false; //XML attribute (~~ is-file="true")
     private boolean isFolder = false;
     private Comparator filter;    //filter for printing
-
-
-    @Override
-    public void startDocument() throws SAXException {
-        super.startDocument();
-    }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
@@ -43,26 +36,30 @@ public class NodeParser extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) {
-
-        switch (qName){
-            case ACTIVE_NODE:
-                if (!isFile) {
-                    addFolderName();
-                }
-                break;
-            case INCLUDE_NODE:
-                if (isFile){
-                    checkByFilter();
-                }
-                break;
-            case FOLDER_NODE:
-                if (folders.size() > 0){
-                    folders.remove(folders.size()-1);
-                }
-                break;
-            default:
-                if(!qName.equals("node")) throw new IllegalStateException("Unexpected qName: " + qName);
+        if(qName.equals(FOLDER_NODE)) {
+            if (folders.size() > 0) {
+                folders.remove(folders.size() - 1);
+            }
         }
+//        switch (qName){
+//            case ACTIVE_NODE:
+//                if (!isFile) {
+//                    addFolderName();
+//                }
+//                break;
+//            case INCLUDE_NODE:
+//                if (isFile){
+//                    checkByFilter();
+//                }
+//                break;
+//            case FOLDER_NODE:
+//                if (folders.size() > 0){
+//                    folders.remove(folders.size()-1);
+//                }
+//                break;
+//            default:
+//                if(!qName.equals("node")) throw new IllegalStateException("Unexpected qName: " + qName);
+//        }
     }
 
 
@@ -95,5 +92,22 @@ public class NodeParser extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) {
         currentValue += new String(ch, start, length).trim();
+
+        if (isFile == true){
+            checkByFilter();
+        }else if (isFolder == true){
+            addFolderName();
+        }
+
+        //            case ACTIVE_NODE:
+//                if (!isFile) {
+//                    addFolderName();
+//                }
+//                break;
+//            case INCLUDE_NODE:
+//                if (isFile){
+//                    checkByFilter();
+//                }
+//                break;
     }
 }

@@ -2,8 +2,11 @@ package parser;
 
 import appconfig.argument_parser.ParameterStore;
 import comparator.search_type.*;
-import exception.ArgumentException;
 import org.junit.jupiter.api.*;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
@@ -18,7 +21,7 @@ public class SaxParserTest {
 
         try {
             new SaxParser(new MaskType(), "files.xml");
-        } catch (ArgumentException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -29,7 +32,7 @@ public class SaxParserTest {
         ParameterStore.setMack("*.xhtml");
         try {
             new SaxParser(new MaskType(), "test-files.xml");
-        } catch (ArgumentException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -39,7 +42,7 @@ public class SaxParserTest {
     void FullTypeTest() {
         try {
             new SaxParser(new FullType(), "test-files.xml");
-        } catch (ArgumentException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -50,7 +53,7 @@ public class SaxParserTest {
         ParameterStore.setMack("file-1073842118.java");
         try {
             new SaxParser(new EqualsType(), "test-files.xml");
-        } catch (ArgumentException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -61,7 +64,7 @@ public class SaxParserTest {
         ParameterStore.setMack(".*?[a-z]{4}-\\d+\\.[a-z]+");
         try {
             new SaxParser(new RegularType(), "test-files.xml");
-        } catch (ArgumentException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
     }
