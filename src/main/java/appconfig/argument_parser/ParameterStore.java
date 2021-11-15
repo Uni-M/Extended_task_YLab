@@ -10,7 +10,7 @@ public class ParameterStore {
     public static String getMack() {
         return mack;
     }
-    protected void setMack(String mack){
+    public static void setMack(String mack){
         ParameterStore.mack = mack;
     }
 

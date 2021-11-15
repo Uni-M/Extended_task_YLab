@@ -5,6 +5,8 @@ import comparator.SearchFactory;
 import exception.ArgumentException;
 import parser.SaxParser;
 
+import java.io.IOException;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -17,7 +19,7 @@ public class Main {
             comparator.setMask(ParameterStore.getMack());
             new SaxParser(comparator, ParameterStore.getInputFileName());
 
-        }catch (ArgumentException e){
+        } catch (ArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

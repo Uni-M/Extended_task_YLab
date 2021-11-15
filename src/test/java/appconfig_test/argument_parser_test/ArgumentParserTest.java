@@ -53,7 +53,6 @@ class ArgumentParserTest {
 
             assertTrue(ParameterStore.getInputFileName().contains("test-files.xml"));
             assertEquals("file-1498940214.xhtml", getMack());
-            assertEquals("-s", getTypeOfFilter());
 
         } catch (ArgumentException e) {
             System.out.println("invalid arguments entered" + e);
@@ -70,7 +69,6 @@ class ArgumentParserTest {
 
             assertTrue( ParameterStore.getInputFileName().contains("test-files.xml"));
             assertEquals("file-1498940214.xhtml", getMack());
-            assertEquals("-s", getTypeOfFilter());
 
         } catch (ArgumentException e) {
             System.out.println("invalid arguments entered" + e);
@@ -88,7 +86,6 @@ class ArgumentParserTest {
 
             assertEquals("D:\\JavaProjects\\YLab_Extended_task\\test-files.xml", ParameterStore.getInputFileName());
             assertEquals("file-1498940214.xhtml", getMack());
-            assertEquals("-s", getTypeOfFilter());
 
         } catch (ArgumentException e) {
             System.out.println("invalid arguments entered" + e);

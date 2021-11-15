@@ -7,9 +7,9 @@ import static parser.NodeParser.getFolders;
 public abstract class Comparator {
     private String mask;
 
-    public void compare(String arg){
+    public void compare(String child){
 
-        String resultOfFilter = printToConsole(mask, arg);
+        String resultOfFilter = printToConsole(child);
         if (resultOfFilter != null && resultOfFilter.length() > 0){
             System.out.print(SPLIT_DIR);
             for (String folder: getFolders()){
@@ -19,7 +19,7 @@ public abstract class Comparator {
         }
     }
 
-    protected abstract String printToConsole(String arg, String child);
+    protected abstract String printToConsole(String child);
 
     public void setMask(String mack){
         this.mask = mack;

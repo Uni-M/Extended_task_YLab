@@ -19,11 +19,11 @@ public class FullTypeTest {
     @Test
     void fullTypeTest(){
         Assertions.assertEquals("file-1073842118.java",
-                                fullType.printToConsole("", "file-1073842118.java"));
+                                fullType.printToConsole("file-1073842118.java"));
         Assertions.assertEquals("file-1498940214.xhtml",
-                                fullType.printToConsole("", "file-1498940214.xhtml"));
+                                fullType.printToConsole( "file-1498940214.xhtml"));
         Assertions.assertEquals("file-776194140.xml",
-                                fullType.printToConsole("", "file-776194140.xml"));
+                                fullType.printToConsole("file-776194140.xml"));
 
     }
 

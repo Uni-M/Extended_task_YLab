@@ -1,19 +1,19 @@
 package comparator.search_type;
 
+import appconfig.argument_parser.ParameterStore;
 import comparator.Comparator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static appconfig.constant.XConstant.APOSTROPHE;
-
 public class MaskType extends Comparator {
 
-    @Override
-    public String printToConsole(String arg, String child) {
+    String extension = findExtension(ParameterStore.getMack().replaceAll("^'+'+(?!\\S)", ""));
+    private final Pattern pattern = Pattern.compile(extension, Pattern.DOTALL);
 
-        String extension = findExtension(arg);
-        final Pattern pattern = Pattern.compile(extension, Pattern.DOTALL);
+    @Override
+    public String printToConsole(String child) {
+
         Matcher matcher = pattern.matcher(child);
 
         if (matcher.find()) {
@@ -22,15 +22,23 @@ public class MaskType extends Comparator {
         return null;
     }
 
+    private String findExtension(String arg) {
 
-    private String findExtension (String arg){
+        StringBuilder extension = new StringBuilder();
 
-        String argWithoutApostrophe = arg.replaceAll("^'+|'+(?!\\S)", "");
+        char[] chars = arg.toCharArray();
+        for (char ch : chars) {
+            switch (ch) {
+                case '.' -> {
+                    extension.append("\\.");
+                }
+                case '*' -> {
+                    extension.append(".*");
+                }
+                default -> extension.append(ch);
+            }
+        }
 
-        String substring1 = argWithoutApostrophe.substring(argWithoutApostrophe.indexOf(APOSTROPHE)+1, argWithoutApostrophe.indexOf("*"));
-        String substring2 = argWithoutApostrophe.substring(argWithoutApostrophe.indexOf("*")+1, argWithoutApostrophe.length()-1);
-
-        return substring1 + ".*?[ 0-9 a-f A-F ]{0,260}+" + substring2;
+        return extension.toString();
     }
-
 }

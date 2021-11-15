@@ -1,5 +1,7 @@
 package parser;
 
+import appconfig.argument_parser.ParameterStore;
+import comparator.search_type.*;
 import exception.ArgumentException;
 import org.junit.jupiter.api.*;
 
@@ -9,54 +11,58 @@ import org.junit.jupiter.api.*;
 @DisplayName("Sax parser test")
 public class SaxParserTest {
 
-    private SaxParser saxParser;
-    private String [] args;
-
-    @BeforeEach
-    void prepare(){
-        saxParser = new SaxParser();
-    }
-
-    @DisplayName("Test without arguments")
+    @DisplayName("Test with incorrect file name in argument")
     @Test
-    void noArgumentTest(){
-        args = new String[0];
-        Assertions.assertThrows(NullPointerException.class, () -> saxParser.parse(args));
+    void incorrectFileNameInArgumentTest() {
+        ParameterStore.setMack("*.xhtml");
+
+        try {
+            new SaxParser(new MaskType(), "files.xml");
+        } catch (ArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    @DisplayName("File is not exist Test")
+    @DisplayName("Test with mask type in argument")
     @Test
-    void fileExistenceTest(){
-        args = new String[]{"-s", "file-1498940214.xhtml", "-f", "files.xml"};
-        Assertions.assertThrows(ArgumentException.class, () -> saxParser.parse(args));
+    void MaskTypeTest() {
+        ParameterStore.setMack("*.xhtml");
+        try {
+            new SaxParser(new MaskType(), "test-files.xml");
+        } catch (ArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    @DisplayName("Test with correct keys")
+    @DisplayName("Test with full type in argument")
     @Test
-    void correctArgumentTest() {
-        args = new String[]{"-f", "test-files.xml", "-s", "file-1498940214.xhtml"};
-        Assertions.assertThrows(ArgumentException.class, () -> saxParser.parse(args));
+    void FullTypeTest() {
+        try {
+            new SaxParser(new FullType(), "test-files.xml");
+        } catch (ArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    @DisplayName("Test with switched keys")
+    @DisplayName("Test with equals type in argument")
     @Test
-    void switchedArgumentTest() {
-        args = new String[]{"-s", "file-1498940214.xhtml", "-f", "test-files.xml"};
-        Assertions.assertThrows(ArgumentException.class, () -> saxParser.parse(args));
+    void equalsTypeTest() {
+        ParameterStore.setMack("file-1073842118.java");
+        try {
+            new SaxParser(new EqualsType(), "test-files.xml");
+        } catch (ArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    @DisplayName("Test with full file name in argument")
+    @DisplayName("Test with regular type in argument")
     @Test
-    void fullFileNameInArgumentTest() {
-        args = new String[]{"-s", "file-1498940214.xhtml", "-f",
-                "D:\\JavaProjects\\YLab_Extended_task\\test-files.xml"};
-
-        Assertions.assertThrows(ArgumentException.class, () -> saxParser.parse(args));
-    }
-
-
-    @AfterEach
-    void afterEach(){
-        saxParser = null;
+    void regularTypeTest() {
+        ParameterStore.setMack(".*?[a-z]{4}-\\d+\\.[a-z]+");
+        try {
+            new SaxParser(new RegularType(), "test-files.xml");
+        } catch (ArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

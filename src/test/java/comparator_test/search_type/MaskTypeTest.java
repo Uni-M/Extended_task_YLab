@@ -1,11 +1,8 @@
 package comparator_test.search_type;
 
+import appconfig.argument_parser.ParameterStore;
 import comparator.search_type.MaskType;
 import org.junit.jupiter.api.*;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 
@@ -14,39 +11,31 @@ public class MaskTypeTest {
 
     private MaskType maskType;
 
-    @BeforeEach
-    void prepare(){
+    @DisplayName("Correct mask test *.java")
+    @Test
+    void PrintToConsoleCorrectMaskTest1(){
+        ParameterStore.setMack("*.java");
         maskType = new MaskType();
+        Assertions.assertEquals("file-1073842118.java",
+                                maskType.printToConsole("file-1073842118.java"));
     }
 
-    @DisplayName("Correct mask test")
+    @DisplayName("Correct mask test *.xhtml")
     @Test
-    void PrintToConsoleCorrectMaskTest(){
-        Assertions.assertEquals("file-1073842118.java",
-                                maskType.printToConsole("‘*.java’", "file-1073842118.java"));
-        Assertions.assertEquals("file-1073842118.java",
-                                maskType.printToConsole("file-*.java", "file-1073842118.java"));
-        Assertions.assertEquals("file-1073842118.java",
-                                maskType.printToConsole("f*a", "file-1073842118.java"));
+    void PrintToConsoleCorrectMaskTest2(){
+        ParameterStore.setMack("*.xhtml");
+        maskType = new MaskType();
+        Assertions.assertEquals("file-1498940214.xhtml",
+                maskType.printToConsole("file-1498940214.xhtml"));
     }
 
     @DisplayName("Incorrect mask test")
     @Test
     void PrintToConsoleIncorrectMaskTest(){
+        ParameterStore.setMack("*sf*’");
+        maskType = new MaskType();
         Assertions.assertNotEquals("file-1073842118.java",
-                                   maskType.printToConsole("‘*sf*’", "file-1073842118.java"));
-        Assertions.assertNotEquals("file-1073842118.java",
-                                   maskType.printToConsole("‘*.ja'va’", "file-1073842118.java"));
-    }
-
-    @DisplayName("Exception catching test")
-    @Test
-     void PrintToConsoleExceptionTest() throws StringIndexOutOfBoundsException {
-        Throwable thrown = assertThrows(StringIndexOutOfBoundsException.class, () -> {
-            Assertions.assertEquals("file-1073842118.java",
-                    maskType.printToConsole("*", "file-1073842118.java"));
-        });
-        assertNotNull(thrown.getMessage());
+                                   maskType.printToConsole("file-1073842118.java"));
     }
 
     @AfterEach

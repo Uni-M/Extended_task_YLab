@@ -30,9 +30,15 @@ public class NodeParser extends DefaultHandler {
 
         if (qName.equals(INCLUDE_NODE)) {
             if (attributes.getValue(IS_FILE).equals(TRUE)){
+                isFolder = false;
                 isFile = true;
             }
+        }else if (qName.equals(ACTIVE_NODE)){
+            if (!isFile) {
+                isFolder = true;
+            }
         }
+
     }
 
     @Override
@@ -90,6 +96,4 @@ public class NodeParser extends DefaultHandler {
     public void characters(char[] ch, int start, int length) {
         currentValue += new String(ch, start, length).trim();
     }
-
-
 }
