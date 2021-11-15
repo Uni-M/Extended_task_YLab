@@ -1,13 +1,13 @@
 package comparator.search_type;
 
-import comparator.AbstractComparator;
+import comparator.Comparator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static appconfig.constant.XConstant.APOSTROPHE;
 
-public class MaskType extends AbstractComparator {
+public class MaskType extends Comparator {
 
     @Override
     public String printToConsole(String arg, String child) {

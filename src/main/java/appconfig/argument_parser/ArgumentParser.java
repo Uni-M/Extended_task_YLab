@@ -6,9 +6,9 @@ import java.io.File;
 import java.util.Arrays;
 
 import static appconfig.constant.XConstant.*;
+import static comparator.search_type.SearchType.*;
 
 public class ArgumentParser extends ParameterStore {
-//    ParameterStore parameterStore = new ParameterStore();
 
     public void argumentProcess(String[] args) throws ArgumentException { //start of parsing
         validator(args);
@@ -21,17 +21,29 @@ public class ArgumentParser extends ParameterStore {
         for (int i = 0; i < args.length; i++){
             switch (args[i]) {
                 case KEY_INPUT_FILE -> setInputFileName(fileExists(args[i + 1])); // — это получение имени файла + проверка//
-
-                case KEY_MACK, KEY_MACK_REGULAR -> {
-                    setTypeOfFilter(args[i]);
-                    setStringToFilter(args[i + 1]);
+                case KEY_MACK_REGULAR -> {               //create class regular_type
+                    setMack(args[i + 1]);
+                    setSearchType(Regular);
+                }
+                case KEY_MACK -> {
+                    setMack(args[i + 1]);
+                    if (getMack().contains("*")) {        //if argument contains "*" find look for files with the specified extension
+                        setSearchType(Mask);
+                    } else {
+                        setSearchType(Equals);
+                    }
                 }
             }
+
         }
     }
 
 
     private void validator(String[] args) throws ArgumentException {
+
+        if (args.length < 2){
+            throw new ArgumentException("too few arguments");
+        }
 
         if (!Arrays.asList(args).contains(KEY_INPUT_FILE)) {
             throw new ArgumentException("absent key input file");

@@ -4,7 +4,7 @@ import comparator.search_type.*;
 
 public class SearchFactory {
 
-    public AbstractComparator create(SearchType filter){
+    public Comparator create(SearchType filter){
         switch (filter){
             case Regular -> { return new RegularType(); }  //create class regular_type
             case Mask    -> { return new MaskType();    }  //create class mask_type

@@ -1,8 +1,8 @@
 package comparator.search_type;
 
-import comparator.AbstractComparator;
+import comparator.Comparator;
 
-public class EqualsType extends AbstractComparator {
+public class EqualsType extends Comparator {
     @Override
     public String printToConsole(String arg, String child) {
         if (child.equals(arg)){

@@ -1,11 +1,11 @@
 package comparator.search_type;
 
-import comparator.AbstractComparator;
+import comparator.Comparator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegularType extends AbstractComparator {
+public class RegularType extends Comparator {
 
     @Override
     public String printToConsole(String arg, String child) {

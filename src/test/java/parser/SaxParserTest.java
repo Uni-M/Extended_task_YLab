@@ -21,7 +21,7 @@ public class SaxParserTest {
     @Test
     void noArgumentTest(){
         args = new String[0];
-        Assertions.assertThrows(ArgumentException.class, () -> saxParser.parse(args));
+        Assertions.assertThrows(NullPointerException.class, () -> saxParser.parse(args));
     }
 
     @DisplayName("File is not exist Test")
@@ -31,7 +31,7 @@ public class SaxParserTest {
         Assertions.assertThrows(ArgumentException.class, () -> saxParser.parse(args));
     }
 
-    @DisplayName("Test with switched keys")
+    @DisplayName("Test with correct keys")
     @Test
     void correctArgumentTest() {
         args = new String[]{"-f", "test-files.xml", "-s", "file-1498940214.xhtml"};

@@ -52,7 +52,7 @@ class ArgumentParserTest {
             argumentParser.argumentProcess(args);
 
             assertTrue(ParameterStore.getInputFileName().contains("test-files.xml"));
-            assertEquals("file-1498940214.xhtml", getStringToFilter());
+            assertEquals("file-1498940214.xhtml", getMack());
             assertEquals("-s", getTypeOfFilter());
 
         } catch (ArgumentException e) {
@@ -69,7 +69,7 @@ class ArgumentParserTest {
             argumentParser.argumentProcess(args);
 
             assertTrue( ParameterStore.getInputFileName().contains("test-files.xml"));
-            assertEquals("file-1498940214.xhtml", getStringToFilter());
+            assertEquals("file-1498940214.xhtml", getMack());
             assertEquals("-s", getTypeOfFilter());
 
         } catch (ArgumentException e) {
@@ -87,7 +87,7 @@ class ArgumentParserTest {
             argumentParser.argumentProcess(args);
 
             assertEquals("D:\\JavaProjects\\YLab_Extended_task\\test-files.xml", ParameterStore.getInputFileName());
-            assertEquals("file-1498940214.xhtml", getStringToFilter());
+            assertEquals("file-1498940214.xhtml", getMack());
             assertEquals("-s", getTypeOfFilter());
 
         } catch (ArgumentException e) {

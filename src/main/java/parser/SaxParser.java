@@ -1,7 +1,6 @@
 package parser;
 
-import appconfig.argument_parser.ParameterStore;
-import exception.ArgumentException;
+import comparator.Comparator;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.SAXParser;
@@ -11,13 +10,15 @@ import java.io.IOException;
 
 public class SaxParser {
 
-    public void parse(String[] args) throws ArgumentException {
+    public SaxParser(Comparator comparator, String inputFileName){
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
         factory.setValidating(true);
         factory.setNamespaceAware(false);
 
         NodeParser handler = new NodeParser();
+        handler.setComparator(comparator);
+
         SAXParser parser;
 
         try {
@@ -27,11 +28,8 @@ public class SaxParser {
             return;
         }
 
-
-        File file = new File(ParameterStore.getInputFileName());
-
         try {
-            parser.parse(file,handler);
+            parser.parse(new File(inputFileName),handler);
         } catch (SAXException e) {
             System.out.println("sax parsing error " + e);
         } catch (IOException e) {

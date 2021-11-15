@@ -1,15 +1,13 @@
 package parser;
 
 import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import appconfig.argument_parser.ArgumentParser;
-import comparator.SearchFactory;
-import comparator.AbstractComparator;
+import comparator.Comparator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static appconfig.argument_parser.FinderArgForFilter.argumentForPrinting;
 import static appconfig.constant.XConstant.*;
 
 public class NodeParser extends DefaultHandler {
@@ -17,13 +15,14 @@ public class NodeParser extends DefaultHandler {
     private static List<String> folders = new ArrayList<>();
 
     private String currentValue = "";
-    private static boolean isFile = false; //XML attribute (~~ is-file="true")
-    private AbstractComparator filter;    //filter for printing
+    private boolean isFile = false; //XML attribute (~~ is-file="true")
+    private boolean isFolder = false;
+    private Comparator filter;    //filter for printing
+
 
     @Override
-    public void startDocument() {
-        SearchFactory searchFactory = new SearchFactory();
-        filter = searchFactory.create(argumentForPrinting());
+    public void startDocument() throws SAXException {
+        super.startDocument();
     }
 
     @Override
@@ -70,7 +69,7 @@ public class NodeParser extends DefaultHandler {
 
 
     private void checkByFilter(){
-        filter.compareFileName(ArgumentParser.getStringToFilter(), currentValue);
+        filter.compare(currentValue);
         isFile = false;
         currentValue = "";
     }
@@ -83,8 +82,14 @@ public class NodeParser extends DefaultHandler {
         return currentValue;
     }
 
+    public void setComparator(Comparator comparator) {
+        filter = comparator;
+    }
+
     @Override
     public void characters(char[] ch, int start, int length) {
         currentValue += new String(ch, start, length).trim();
     }
+
+
 }
