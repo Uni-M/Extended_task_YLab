@@ -16,7 +16,6 @@ public class Main {
 
             FactoryMethod factoryMethod = new FactoryMethod();
             Comparator comparator = factoryMethod.create(ParameterStore.getSearchType());
-            comparator.setMask(ParameterStore.getMask());
 
             new SaxParser(comparator, ParameterStore.getInputFileName());
 
