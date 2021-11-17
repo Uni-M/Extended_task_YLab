@@ -22,7 +22,7 @@ public class FileStore {
         if (!isFile) {
            addDirectory(child);
         }else if(isCompare){
-            System.out.println(getDirectory() + child);
+            print(child);
         }
     }
 
@@ -38,5 +38,9 @@ public class FileStore {
         if (folders.size() > 0){
             folders.remove(folders.size()-1);
         }
+    }
+
+    protected void print(String filename){
+        System.out.println(getDirectory() + filename);
     }
 }
