@@ -22,11 +22,9 @@ public class ApplicationTest {
     void noSearchInput(){
         Main.main(new String[]{"-f", "test-files.xml"});
 
-        String expected = """
-                /file-776194140.xml\r
-                /dir-880176375/file-1073842118.java\r
-                /dir-880176375/dir-2145307015/file-1498940214.xhtml\r
-                """;
+        String expected = "/file-776194140.xml" + System.lineSeparator()
+                + "/dir-880176375/file-1073842118.java" + System.lineSeparator()
+                + "/dir-880176375/dir-2145307015/file-1498940214.xhtml" + System.lineSeparator();
         Assertions.assertEquals(expected, OutputStream.toString());
     }
 
@@ -35,7 +33,7 @@ public class ApplicationTest {
     void exactSearchInput(){
         Main.main(new String[]{"-f", "test-files.xml", "-s", "file-1498940214.xhtml"});
 
-        String expected = "/dir-880176375/dir-2145307015/file-1498940214.xhtml\r\n";
+        String expected = "/dir-880176375/dir-2145307015/file-1498940214.xhtml" + System.lineSeparator();
         Assertions.assertEquals(expected, OutputStream.toString());
     }
 
@@ -44,7 +42,7 @@ public class ApplicationTest {
     void simpleSearchInput(){
         Main.main(new String[]{"-f", "test-files.xml", "-s", "'*.java'"});
 
-        String expected = "/dir-880176375/file-1073842118.java\r\n";
+        String expected = "/dir-880176375/file-1073842118.java" + System.lineSeparator();
         Assertions.assertEquals(expected, OutputStream.toString());
     }
 
@@ -53,11 +51,9 @@ public class ApplicationTest {
     void extendedSearchInput(){
         Main.main(new String[]{"-f", "test-files.xml", "-S", "'.*?[a-z]{4}-\\d+\\.[a-z]+'"});
 
-        String expected = """
-                /file-776194140.xml\r
-                /dir-880176375/file-1073842118.java\r
-                /dir-880176375/dir-2145307015/file-1498940214.xhtml\r
-                """;
+        String expected = "/file-776194140.xml" + System.lineSeparator()
+                + "/dir-880176375/file-1073842118.java" + System.lineSeparator()
+                + "/dir-880176375/dir-2145307015/file-1498940214.xhtml" + System.lineSeparator();
         Assertions.assertEquals(expected, OutputStream.toString());
     }
 
