@@ -1,12 +1,11 @@
 package appconfig_test.argument_parser_test;
 
+import appconfig.argument_parser.ArgumentParser;
 import appconfig.argument_parser.ParameterStore;
 import org.junit.jupiter.api.*;
-import appconfig.argument_parser.ArgumentParser;
 import exception.ArgumentException;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static appconfig.argument_parser.ArgumentParser.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 
@@ -43,7 +42,7 @@ class ArgumentParserTest {
     }
 
 
-    @DisplayName("Test with switched keys")
+    @DisplayName("Test with correct keys")
     @Test
     void correctArgumentTest() {
         args = new String[]{"-f", "test-files.xml", "-s", "file-1498940214.xhtml"};
@@ -52,7 +51,7 @@ class ArgumentParserTest {
             argumentParser.argumentProcess(args);
 
             assertTrue(ParameterStore.getInputFileName().contains("test-files.xml"));
-            assertEquals("file-1498940214.xhtml", getMack());
+            assertEquals("file-1498940214.xhtml", ParameterStore.getMask());
 
         } catch (ArgumentException e) {
             System.out.println("invalid arguments entered" + e);
@@ -68,7 +67,7 @@ class ArgumentParserTest {
             argumentParser.argumentProcess(args);
 
             assertTrue( ParameterStore.getInputFileName().contains("test-files.xml"));
-            assertEquals("file-1498940214.xhtml", getMack());
+            assertEquals("file-1498940214.xhtml", ParameterStore.getMask());
 
         } catch (ArgumentException e) {
             System.out.println("invalid arguments entered" + e);
@@ -85,7 +84,7 @@ class ArgumentParserTest {
             argumentParser.argumentProcess(args);
 
             assertEquals("D:\\JavaProjects\\YLab_Extended_task\\test-files.xml", ParameterStore.getInputFileName());
-            assertEquals("file-1498940214.xhtml", getMack());
+            assertEquals("file-1498940214.xhtml", ParameterStore.getMask());
 
         } catch (ArgumentException e) {
             System.out.println("invalid arguments entered" + e);

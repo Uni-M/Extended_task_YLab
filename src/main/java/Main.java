@@ -1,7 +1,7 @@
 import appconfig.argument_parser.ArgumentParser;
 import appconfig.argument_parser.ParameterStore;
 import comparator.Comparator;
-import comparator.SearchFactory;
+import comparator.FactoryMethod;
 import org.xml.sax.SAXException;
 import parser.SaxParser;
 
@@ -14,10 +14,12 @@ public class Main {
             ArgumentParser argumentParser = new ArgumentParser();
             argumentParser.argumentProcess(args);
 
-            SearchFactory searchFactory = new SearchFactory();
-            Comparator comparator = searchFactory.create(ParameterStore.getSearchType());
-            comparator.setMask(ParameterStore.getMack());
+            FactoryMethod factoryMethod = new FactoryMethod();
+            Comparator comparator = factoryMethod.create(ParameterStore.getSearchType());
+            comparator.setMask(ParameterStore.getMask());
+
             new SaxParser(comparator, ParameterStore.getInputFileName());
+
         } catch (SAXException e) {
             System.out.println("sax parsing error " + e.getMessage());
         } catch (IOException e) {

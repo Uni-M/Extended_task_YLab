@@ -6,20 +6,15 @@ import comparator.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MaskType extends Comparator {
+public class MaskComparator extends Comparator {
 
-    String extension = findExtension(ParameterStore.getMack().replaceAll("^'+'+(?!\\S)", ""));
+    String extension = findExtension(ParameterStore.getMask().replaceAll("^'+|'+(?!\\S)", ""));
     private final Pattern pattern = Pattern.compile(extension, Pattern.DOTALL);
 
     @Override
-    public String printToConsole(String child) {
-
+    public boolean compare(String child) {
         Matcher matcher = pattern.matcher(child);
-
-        if (matcher.find()) {
-            return child;
-        }
-        return null;
+        return matcher.find();
     }
 
     private String findExtension(String arg) {

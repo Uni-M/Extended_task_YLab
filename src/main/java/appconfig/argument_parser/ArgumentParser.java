@@ -22,12 +22,12 @@ public class ArgumentParser extends ParameterStore {
             switch (args[i]) {
                 case KEY_INPUT_FILE -> setInputFileName(fileExists(args[i + 1])); // — это получение имени файла + проверка//
                 case KEY_MACK_REGULAR -> {               //create class regular_type
-                    setMack(args[i + 1]);
+                    setMask(args[i + 1]);
                     setSearchType(Regular);
                 }
                 case KEY_MACK -> {
-                    setMack(args[i + 1]);
-                    if (getMack().contains("*")) {        //if argument contains "*" find look for files with the specified extension
+                    setMask(args[i + 1]);
+                    if (getMask().contains("*")) {        //if argument contains "*" find look for files with the specified extension
                         setSearchType(Mask);
                     } else {
                         setSearchType(Equals);

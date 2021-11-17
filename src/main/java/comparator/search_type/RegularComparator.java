@@ -6,17 +6,14 @@ import comparator.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegularType extends Comparator {
+public class RegularComparator extends Comparator {
 
-    String regex = ParameterStore.getMack().replaceAll("^'+|'+(?!\\S)", "");
+    String regex = ParameterStore.getMask().replaceAll("^'+|'+(?!\\S)", "");
     private final Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
 
     @Override
-    public String printToConsole(String child) {
+    public boolean compare(String child) {
         Matcher matcher = pattern.matcher(child);
-        if (matcher.find()) {
-            return child;
-        }
-        return null;
+        return matcher.find();
     }
 }

@@ -2,16 +2,16 @@ package appconfig.argument_parser;
 
 import comparator.search_type.SearchType;
 
-public class ParameterStore {
+public abstract class ParameterStore {
     private static String inputFileName;
-    private static String mack;
+    private static String mask;
     private static SearchType searchType = SearchType.Full;
 
-    public static String getMack() {
-        return mack;
+    public static String getMask() {
+        return mask;
     }
-    public static void setMack(String mack){
-        ParameterStore.mack = mack;
+    public static void setMask(String mask){
+        ParameterStore.mask = mask;
     }
 
     public static String getInputFileName() {

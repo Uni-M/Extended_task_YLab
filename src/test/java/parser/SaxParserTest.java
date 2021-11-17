@@ -17,10 +17,10 @@ public class SaxParserTest {
     @DisplayName("Test with incorrect file name in argument")
     @Test
     void incorrectFileNameInArgumentTest() {
-        ParameterStore.setMack("*.xhtml");
+        ParameterStore.setMask("*.xhtml");
 
         try {
-            new SaxParser(new MaskType(), "files.xml");
+            new SaxParser(new MaskComparator(), "files.xml");
         } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
@@ -29,9 +29,9 @@ public class SaxParserTest {
     @DisplayName("Test with mask type in argument")
     @Test
     void MaskTypeTest() {
-        ParameterStore.setMack("*.xhtml");
+        ParameterStore.setMask("*.xhtml");
         try {
-            new SaxParser(new MaskType(), "test-files.xml");
+            new SaxParser(new MaskComparator(), "test-files.xml");
         } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
@@ -41,7 +41,7 @@ public class SaxParserTest {
     @Test
     void FullTypeTest() {
         try {
-            new SaxParser(new FullType(), "test-files.xml");
+            new SaxParser(new FullComparator(), "test-files.xml");
         } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
@@ -50,9 +50,9 @@ public class SaxParserTest {
     @DisplayName("Test with equals type in argument")
     @Test
     void equalsTypeTest() {
-        ParameterStore.setMack("file-1073842118.java");
+        ParameterStore.setMask("file-1073842118.java");
         try {
-            new SaxParser(new EqualsType(), "test-files.xml");
+            new SaxParser(new EqualsComparator(), "test-files.xml");
         } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
@@ -61,9 +61,9 @@ public class SaxParserTest {
     @DisplayName("Test with regular type in argument")
     @Test
     void regularTypeTest() {
-        ParameterStore.setMack(".*?[a-z]{4}-\\d+\\.[a-z]+");
+        ParameterStore.setMask(".*?[a-z]{4}-\\d+\\.[a-z]+");
         try {
-            new SaxParser(new RegularType(), "test-files.xml");
+            new SaxParser(new RegularComparator(), "test-files.xml");
         } catch (IOException | ParserConfigurationException | SAXException e) {
             System.out.println(e.getMessage());
         }
