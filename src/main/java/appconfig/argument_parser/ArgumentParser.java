@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Arrays;
 
 import static appconfig.constant.XConstant.*;
-import static comparator.search_type.SearchType.*;
+import static appconfig.constant.SearchType.*;
 
 public class ArgumentParser extends ParameterStore {
 
@@ -16,7 +16,6 @@ public class ArgumentParser extends ParameterStore {
     }
 
     private void storeParams(String[] args) throws ArgumentException {
-
 
         for (int i = 0; i < args.length; i++){
             switch (args[i]) {
@@ -34,7 +33,6 @@ public class ArgumentParser extends ParameterStore {
                     }
                 }
             }
-
         }
     }
 
@@ -59,7 +57,7 @@ public class ArgumentParser extends ParameterStore {
     }
 
 
-    private String fileExists(String fileName) throws ArgumentException {  //Вот проверка
+    private String fileExists(String fileName) throws ArgumentException {
         String path = System.getProperty("user.dir");
 //        File f = new File(path + File.separator + fileName);
 

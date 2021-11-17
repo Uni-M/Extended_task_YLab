@@ -1,4 +1,4 @@
-package comparator.search_type;
+package appconfig.constant;
 
 public enum SearchType {
     Full,

@@ -1,5 +1,6 @@
 package comparator;
 
+import appconfig.constant.SearchType;
 import comparator.search_type.*;
 
 public class FactoryMethod {

@@ -11,5 +11,4 @@ public class XConstant {
     public static final String INCLUDE_NODE = "child";
     public static final String FOLDER_NODE = "children";
     public static final String SPLIT_DIR = "/";
-    public static final String APOSTROPHE = "‘";
 }

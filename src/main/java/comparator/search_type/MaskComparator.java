@@ -20,20 +20,15 @@ public class MaskComparator extends Comparator {
     private String findExtension(String arg) {
 
         StringBuilder extension = new StringBuilder();
-
         char[] chars = arg.toCharArray();
+
         for (char ch : chars) {
             switch (ch) {
-                case '.' -> {
-                    extension.append("\\.");
-                }
-                case '*' -> {
-                    extension.append(".*");
-                }
+                case '.' -> extension.append("\\.");
+                case '*' -> extension.append(".*");
                 default -> extension.append(ch);
             }
         }
-
         return extension.toString();
     }
 }

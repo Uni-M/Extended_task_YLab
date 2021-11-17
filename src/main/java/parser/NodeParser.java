@@ -39,11 +39,7 @@ public class NodeParser extends DefaultHandler {
     public void characters(char[] ch, int start, int length) {
         if(isActiveNode){
             String child = new String(ch, start, length).trim();
-            comparator.check(child);
-
-            if (comparator.isCompare()){
-                System.out.println(comparator.getDirectory() + child);
-            }
+            comparator.check(child, comparator.compare(child));
         }
     }
 }

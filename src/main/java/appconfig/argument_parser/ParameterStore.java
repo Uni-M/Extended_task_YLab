@@ -1,6 +1,6 @@
 package appconfig.argument_parser;
 
-import comparator.search_type.SearchType;
+import appconfig.constant.SearchType;
 
 public abstract class ParameterStore {
     private static String inputFileName;
