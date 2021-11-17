@@ -1,7 +1,7 @@
 package parser;
 
 import appconfig.argument_parser.ParameterStore;
-import comparator.search_type.*;
+import comparator.comparator_type.*;
 import org.junit.jupiter.api.*;
 import org.xml.sax.SAXException;
 

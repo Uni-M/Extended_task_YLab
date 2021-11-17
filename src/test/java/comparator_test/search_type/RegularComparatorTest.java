@@ -1,7 +1,7 @@
 package comparator_test.search_type;
 
 import appconfig.argument_parser.ParameterStore;
-import comparator.search_type.RegularComparator;
+import comparator.comparator_type.RegularComparator;
 import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)

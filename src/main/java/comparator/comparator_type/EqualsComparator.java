@@ -1,4 +1,4 @@
-package comparator.search_type;
+package comparator.comparator_type;
 
 import appconfig.argument_parser.ParameterStore;
 import comparator.Comparator;

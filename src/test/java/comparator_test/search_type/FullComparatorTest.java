@@ -1,6 +1,6 @@
 package comparator_test.search_type;
 
-import comparator.search_type.FullComparator;
+import comparator.comparator_type.FullComparator;
 import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
